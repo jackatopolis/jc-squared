@@ -9,8 +9,8 @@ fetch("../../Resources/movies.json")
   .then(response => {
     return response.json();
   })
-  .then(data => console.log(data))
-  .then(data => saveData(data));
+  .then(data => console.log(data));
+  //.then(data => saveData(data));
   
 
 function saveData(data) {
