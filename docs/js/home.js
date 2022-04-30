@@ -5,12 +5,39 @@ console.log('home');
 
 var workingData;
 
-fetch("../../Resources/movies.json")
+
+//var now = moment("20190510", "YYYYMMDD").fromNow(true);
+
+  
+moment("20111031", "YYYYMMDD").fromNow(); // 11 years ago
+moment("20120620", "YYYYMMDD").fromNow(); // 10 years ago
+moment().startOf('day').fromNow();        // 19 hours ago
+moment().endOf('day').fromNow();          // in 5 hours
+moment().startOf('hour').fromNow();  
+
+  //.format('MMMM Do YYYY, h:mm:ss a');
+var inter = setInterval(updateElapsed(), 1000);
+
+function updateElapsed() {
+  var now = moment();
+  var start = moment("20190510", "YYYYMMDD");
+  var elapsed = now.diff(start, 'months', true);
+  $("#myName").text(elapsed);
+  console.log(elapsed);
+}
+
+
+
+
+
+
+
+fetch('./Resources/movies.json')
   .then(response => {
     return response.json();
   })
-  .then(data => console.log(data));
-  //.then(data => saveData(data));
+  .then(data => console.log(data))
+  // .then(data => exportToJsonFile(data))
   
 
 function saveData(data) {
@@ -23,7 +50,7 @@ function exportToJsonFile(jsonData) {
   let dataStr = JSON.stringify(jsonData);
   let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
 
-  let exportFileDefaultName = 'data.json';
+  let exportFileDefaultName = '../jackcohen/jc-squared/docs/Resources/data.json';
 
   let linkElement = document.createElement('a');
   linkElement.setAttribute('href', dataUri);
