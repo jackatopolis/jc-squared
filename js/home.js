@@ -1,17 +1,17 @@
 console.log('home');
 
 
-const data = require('../Resources/movies.json');
-console.log(data);
+//const data = require('../Resources/movies.json');
+//console.log(data);
 
 var workingData;
 
-// fetch("../../Resources/movies.json")
-//   .then(response => {
-//     return response.json();
-//   })
-//   .then(data => console.log(data))
-//   .then(data => saveData(data));
+fetch("../../Resources/movies.json")
+  .then(response => {
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .then(data => saveData(data));
   
 
 function saveData(data) {
