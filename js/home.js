@@ -1,7 +1,7 @@
 console.log('home');
 
 
-const data = require('../../Resources/movies.json');
+const data = require('../Resources/movies.json');
 console.log(data);
 
 var workingData;
