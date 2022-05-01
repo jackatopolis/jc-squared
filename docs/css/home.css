@@ -1,3 +1,87 @@
-h1 {
-  color: red;
+body {
+  background-color:azure;
 }
+
+h1 {
+  color: blue;
+}
+
+.mainContainer {
+  /* display: flex; */
+  justify-content: center;
+  padding: 20px;
+}
+
+.textBox {
+  display: block;
+  width: max-content;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.timeBox {
+  display: block;
+  border: 2px;
+  border-radius: 5px;
+  border-style: solid;
+  /* width: max-content; */
+  max-width: 70%;
+  padding: 3%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.timeBox h1 {
+  font-size: 35px;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0px;
+}
+
+.left {
+  margin-right: 20%;
+}
+
+.right {
+  margin-left: 20%;
+}
+
+.middle {
+  margin-left: 10%;
+  margin-right: 10%;
+  width:80%;
+}
+
+/* #baliHai {
+    margin-left: 10%;
+    margin-right: 10%;
+} */
+
+#timeElapsed {
+  display: block;
+  width: 85%;
+  height: 150px;
+  margin: 10 auto 10 auto;
+  border: 3px;
+  border-radius: 5px;
+  border-style: solid;
+}
+
+#timeElapsed h1 {
+  font-size: 200%;
+  vertical-align: middle;
+  justify-content: center;
+  padding: 20px;
+}
+
+#monthsElapsed {
+  text-align: center;
+  vertical-align: middle;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 600%;
+}
+
+/* #monthsElapsed b {
+  font-size: inherit;
+} */

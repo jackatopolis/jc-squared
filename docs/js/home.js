@@ -1,10 +1,45 @@
 console.log('home');
 
 
-//console.log(data);
+var baliHaiTimes = ['x', '20220104', '20220110', '20220124', '20220131', '20220221', '20220228', '20220314', '20220321', '20220328', '20220404', '20220411'];
+var baliHaiWeights = ['Combined Weight', 2.76, 2.71, 3.22, 3.14, 3.33, 3.16, 3.03, 3.27, 3.33, 3.08];
 
-var workingData;
-
+var chart = c3.generate({
+  bindto: '#baliHai',
+  title: {
+    text: 'Bali Hai Weight',
+    position: 'top-center'
+  },
+  width: 400,
+  height: 200,
+  data: {
+    x: 'x',
+    xFormat: '%Y%m%d',
+    columns: [
+      baliHaiTimes,
+      baliHaiWeights
+    ]
+  },
+  axis: {
+    x: {
+      type: 'timeseries',
+      tick: {
+        format: '%Y-%m-%d'
+      }
+    }
+  },
+  legend: {
+    show: false
+  },
+  tooltip: {
+    format: {
+      value: function (value, ratio, id) {
+        return value + " lbs.";
+      }
+      //            value: d3.format(',') // apply this format to both y and y2
+    }
+  }
+});
 
 //var now = moment("20190510", "YYYYMMDD").fromNow(true);
 
@@ -17,14 +52,22 @@ var workingData;
 
 //.format('MMMM Do YYYY, h:mm:ss a');
 
-window.setInterval(updateElapsed, 1000);
+window.setInterval(updateElapsed, 500);
 
 
 function updateElapsed() {
   var now = moment();
   var start = moment("20190510", "YYYYMMDD");
-  var elapsed = now.diff(start, 'months', true);
-  $("#myName").text(elapsed.toFixed(6));
+  var monthsElapsed = now.diff(start, 'months', true);
+  var yearsElapsed = now.diff(start, 'years', true);
+  var minutesElapsed = now.diff(start, 'minutes', true);
+  var hpElapsed = minutesElapsed / 1180;
+  var lightElapsed = minutesElapsed * 1.799e+10;
+  $("#monthsElapsed b").text(monthsElapsed.toFixed(6));
+  $("#yearsElapsed b").text(yearsElapsed.toFixed(4));
+  $("#minutesElapsed b").text(minutesElapsed.toLocaleString("en-US"));
+  $("#hpElapsed b").text(hpElapsed.toFixed(1));
+  $("#lightElapsed b").text(lightElapsed.toLocaleString("en-US"));
 }
 
 
@@ -51,7 +94,6 @@ function saveData(data) {
   workingData = data;
 }
 
-console.log(workingData);
 
 function exportToJsonFile(jsonData) {
   let dataStr = JSON.stringify(jsonData);
